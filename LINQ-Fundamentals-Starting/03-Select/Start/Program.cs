@@ -4,7 +4,19 @@
 SamplesViewModel vm = new();
 
 // Call Sample Method
-var result = vm.GetAllQuery();
+var getAllQueryResult = vm.GetAllQuery();
 
-// Display Results
-vm.Display(result);
+var getAllMethodResult = vm.GetAllMethod();
+
+var getSingleColumnQueryResult = vm.GetSingleColumnQuery();
+
+var getSingleColumnMethodResult = vm.GetSingleColumnMethod();
+
+var getSpecificColumnsQueryResult = vm.GetSpecificColumnsQuery();
+
+var getSpecificColumnsMethodResult = vm.GetSpecificColumnsMethod();
+
+var anonymousClassQueryResult = vm.AnonymousClassQuery();
+
+var anonymousClassMethodResult = vm.AnonymousClassMethod();
+vm.Display(anonymousClassMethodResult);
