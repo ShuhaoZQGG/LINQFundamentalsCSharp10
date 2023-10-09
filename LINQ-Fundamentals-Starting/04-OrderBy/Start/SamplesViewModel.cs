@@ -12,7 +12,10 @@
       List<Product> list = new();
 
       // Write Query Syntax Here
-      
+      list = (from prod in products
+              orderby prod.ListPrice
+              select prod
+              ).ToList();
 
       return list;
     }
@@ -28,7 +31,9 @@
       List<Product> list = new();
 
       // Write Method Syntax Here
-     
+     list = products
+         .Select(prod => prod) // Optional
+         .OrderBy(prod=>prod.ListPrice).ToList();
 
       return list;
     }
@@ -44,7 +49,9 @@
       List<Product> list = new();
 
       // Write Query Syntax Here
-    
+      list = (from prod in products
+              orderby prod.ListPrice descending 
+              select prod).ToList();
 
       return list;
     }
@@ -60,7 +67,7 @@
       List<Product> list = new();
 
       // Write Method Syntax Here
-      
+      list = products.OrderByDescending(prod => prod.ListPrice).ToList();
 
       return list;
     }
@@ -76,7 +83,10 @@
       List<Product> list = new();
 
       // Write Query Syntax Here
-     
+      // Order by Color first, and then Name
+      list = (from prod in products
+              orderby prod.Color descending, prod.Name ascending // ascending is a default, no need to add it but you can
+              select prod).ToList();
 
       return list;
     }
@@ -92,7 +102,7 @@
       List<Product> list = new();
 
       // Write Method Syntax Here
-     
+      list = products.OrderByDescending(prod => prod.Color).ThenBy(prod => prod.Name).ToList();
 
       return list;
     }
@@ -108,8 +118,10 @@
       List<Product> list = new();
 
       // Write Method Syntax Here
-      
-
+      list = products
+          .OrderByDescending(prod => prod.Color)
+          .ThenByDescending(prod => prod.Name)
+          .ToList();
       return list;
     }
     #endregion
