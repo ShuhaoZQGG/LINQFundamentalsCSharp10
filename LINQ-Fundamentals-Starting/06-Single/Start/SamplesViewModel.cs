@@ -1,4 +1,6 @@
-﻿namespace LINQSamples
+﻿using System.Security.Cryptography;
+
+namespace LINQSamples
 {
   public class SamplesViewModel : ViewModelBase
   {
@@ -15,9 +17,12 @@
       Product value = null;
 
       // Write Query Syntax Here
+      value = (from prod in products
+          select prod).First(prod => prod.Color == "Red");
 
       // Test the exception handling
-
+      //value = (from prod in products
+      //    select prod).First(prod => prod.Color == "purple");
       return value;
     }
     #endregion
@@ -35,7 +40,8 @@
       Product value = null;
 
       // Write Method Syntax Here
-      
+      value = products.First(prod => prod.Color == "White");
+
       return value;
     }
     #endregion
@@ -53,9 +59,11 @@
       Product value = null;
 
       // Write Query Syntax Here
-
+      value = (from prod in products
+          select prod).FirstOrDefault(prod => prod.Color == "Red");
       // Test the exception handling
-
+      value = (from prod in products
+          select prod).FirstOrDefault(prod => prod.Color == "purple");
       return value;
     }
     #endregion
@@ -73,6 +81,7 @@
       Product value = null;
 
       // Write Method Syntax Here
+      value = products.FirstOrDefault(prod => prod.Color == "Red");
 
       return value;
     }
@@ -91,9 +100,10 @@
       Product value = null;
 
       // Write Query Syntax Here
-     
+      value = (from prod in products
+          select prod).FirstOrDefault(prod => prod.Color == "purple", new Product { ProductID = -1, Color = null });
       // Test the exception handling
-      
+
       return value;
     }
     #endregion
@@ -111,6 +121,7 @@
       Product value = null;
 
       // Write Method Syntax Here
+      value = products.FirstOrDefault(prod => prod.Color == "Red", new Product { ProductID = -1, Color = null });
 
       return value;
     }
@@ -127,9 +138,13 @@
       Product value = null;
 
       // Write Query Syntax Here
-      
+      value = (from prod in products
+              select prod)
+          .Last(prod => prod.Color == "Red");
       // Test the exception handling
-      
+      //value = (from prod in products
+      //        select prod)
+      //    .Last(prod => prod.Color == "purple");
       return value;
     }
     #endregion
@@ -145,7 +160,7 @@
       Product value = null;
 
       // Write Method Syntax Here
-      
+      value = products.Last(prod => prod.Color == "Red");
 
       return value;
     }
@@ -162,10 +177,10 @@
       Product value = null;
 
       // Write Query Syntax Here
-     
+      value = (from prod in products select prod).LastOrDefault(prod => prod.Color == "Red");
 
       // Test the exception handling
-     
+      value = (from prod in products select prod).LastOrDefault(prod => prod.Color == "purple");
       return value;
     }
     #endregion
@@ -181,7 +196,7 @@
       Product value = null;
 
       // Write Method Syntax Here
-      
+      value = products.LastOrDefault(prod => prod.Color == "Red", new Product { ProductID = -1, Color = null });
 
       return value;
     }
@@ -199,11 +214,12 @@
       Product value = null;
 
       // Write Query Syntax Here
-
+      value = (from prod in products select prod).Single(prod => prod.ProductID == 706);
       // Test the exception handling for finding multiple values
+      value = (from prod in products select prod).Single(prod => prod.Color == "Red");
 
       // Test the exception handling for the list is null
-
+      value = (from prod in products select prod).Single(prod => prod.Color == "purple");
       return value;
     }
     #endregion
@@ -220,6 +236,7 @@
       Product value = null;
 
       // Write Method Syntax Here
+      value = products.Single(prod => prod.ProductID == 706);
 
       return value;
     }
@@ -237,18 +254,22 @@
       Product value = null;
 
       // Write Query Syntax Here
-
+      value = (from prod in products select prod).SingleOrDefault(prod => prod.ProductID == 706);
 
       // Test the exception handling for finding multiple values
+      //value = (from prod in products select prod).SingleOrDefault(prod => prod.Color == "Red");
 
 
       // Test the exception handling for the list is empty
+      //products.Clear();
+      //value = (from prod in products select prod).SingleOrDefault(prod => prod.ProductID == 706);
 
       // Test the exception handling for the list is empty and a default value is supplied
+      //value = (from prod in products select prod).SingleOrDefault(prod => prod.ProductID == 706, new Product { ProductID = -1, Color = null});
 
       // Test the exception handling for the list is null
-     
-
+      value = (from prod in products select prod).SingleOrDefault(prod => prod.ProductID == 100001);
+      
       return value;
     }
     #endregion
@@ -265,7 +286,7 @@
       Product value = null;
 
       // Write Method Syntax Here
-      
+      value = products.SingleOrDefault(prod => prod.ProductID == 706, new Product { ProductID = 706, Color = null });
 
       return value;
     }

@@ -6,7 +6,20 @@ SamplesViewModel vm = new();
 try
 {
   // Call Sample Method
-  var result = vm.SingleOrDefaultQuery();
+  //var result = vm.FirstQuery();
+  //var result = vm.FirstMethod();
+  //var result = vm.FirstOrDefaultQuery();
+  //var result = vm.FirstOrDefaultMethod();
+  //var result = vm.FirstOrDefaultWithDefaultQuery();
+  //var result = vm.FirstOrDefaultWithDefaultMethod();
+  //var result = vm.LastQuery();
+  //var result = vm.LastMethod();
+  //var result = vm.LastOrDefaultQuery();
+  //var result = vm.LastOrDefaultMethod();
+  //var result = vm.SingleQuery();
+  //var result = vm.SingleMethod();
+  //var result = vm.SingleOrDefaultQuery();
+  var result = vm.SingleOrDefaultMethod();
 
   // Display Results
   vm.Display(result);
